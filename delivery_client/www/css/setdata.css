@@ -1,0 +1,10 @@
+.checkbox-area {
+  border: 1px solid grey;
+  border-radius: 4px;
+  padding: 7px 7px 7px 7px;
+  margin-top: 5px;
+}
+
+.checkbox-input{
+  margin-left: 5px;
+}

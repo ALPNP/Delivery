@@ -1,0 +1,32 @@
+.fullScreen{
+  width: 100%;
+  height: 100vh;
+}
+
+.fullScreen div{
+  margin: 0;
+}
+
+/*.orderImage{
+  width: 50%;
+  height: 50%;
+}*/
+
+.modal-dialog{
+   overflow-y: initial !important
+}
+
+.modal-body {
+    max-height: auto; // например
+    overflow-y: auto;
+}
+
+.bar {
+  margin-bottom: 5px;
+}
+
+span.highlight {
+background-color: #C6D9DB; cursor: pointer; }
+
+span.splink {
+color: #0A5794; cursor: pointer; }

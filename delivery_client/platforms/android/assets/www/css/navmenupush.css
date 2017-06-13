@@ -1,0 +1,73 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    padding: 50px 0 0 0;
+}
+
+.navbar-toggle {
+    float: left;
+    margin-left: 15px;
+}
+
+.wrapper {
+    margin-top: 50px;
+}
+
+@media (max-width: 992px) {
+    .wrapper {
+        margin-top: 5px;
+    }
+}
+
+@media (min-width: 0) {
+    .navbar-toggle {
+        display: block;
+        /* force showing the toggle */
+    }
+}
+
+@media (min-width: 992px) {
+    body {
+        padding: 0;
+    }
+}
+
+.canvas-nav {
+    margin: 7.5px -15px;
+    color: #777777;
+}
+
+.canvas-nav {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px;
+}
+
+@media (min-width: 768px) {
+    .canvas-nav {
+        text-align: center;
+        margin: 0;
+    }
+    .canvas-nav {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+}
+
+.app-text {
+    color: #777777;
+    padding-top: 5px;
+}
+
+.foto {
+    text-align: center;
+    border: 5px solid rgba(119, 119, 119, 0.5);
+    border-radius: 5px;
+}
+
+.foto > img {
+    display: inline;
+}

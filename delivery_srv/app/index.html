@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Your other stuff  (you can have problems if you don't add minimum scale in the viewport) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Include a Sidr bundled CSS theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/master.css">
+    <script src="https://use.fontawesome.com/f335942bb2.js"></script>
+    <title>Приём заявок</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fa fa-bars" aria-hidden="true"></i>
+  </button>
+  <button class="navbar-toggler" id='reset' type="button" name="button">
+    <i class="fa fa-refresh" aria-hidden="true"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <p><strong>Фильтры:</strong></p>
+    <p>Тип дефекта: </p>
+    <ul id="filters">
+        <button style="margin-top:5px;" id='cleavage' class="filterButtons btn btn-success">Скол</button>
+        <button style="margin-top:5px;" id='dent' class="filterButtons btn btn-success">Вмятина</button>
+        <button style="margin-top:5px;" id='bubbles' class="filterButtons btn btn-success">Пузыри на ЛКП</button>
+        <button style="margin-top:5px;" id='crack' class="filterButtons btn btn-success">Трещина</button>
+        <button style="margin-top:5px;" id='attrition' class="filterButtons btn btn-success">Потертость</button>
+        <button style="margin-top:5px;" id='loopholes' class="filterButtons btn btn-success">Люфты сверх нормы</button>
+        <button style="margin-top:5px;" id='clearances' class="filterButtons btn btn-success">Зазоры сверх нормы</button>
+        <button style="margin-top:5px;" id='absenceParts' class="filterButtons btn btn-success">Отсутствие частей</button>
+        <button style="margin-top:5px;" id='deployFail' class="filterButtons btn btn-success">Производственный брак</button>
+    </ul>
+    <p>Оценка: </p>
+    <ul id="rating">
+        <button style="margin-top:5px;" id='1' class="ratingButtons btn btn-success">1</button>
+        <button style="margin-top:5px;" id='2' class="ratingButtons btn btn-success">2</button>
+        <button style="margin-top:5px;" id='3' class="ratingButtons btn btn-success">3</button>
+        <button style="margin-top:5px;" id='4' class="ratingButtons btn btn-success">4</button>
+        <button style="margin-top:5px;" id='5' class="ratingButtons btn btn-success">5</button>
+    </ul>
+  </div>
+</nav>
+    <div class="container">
+      <div class="row bar">
+        <div class="col-12">
+          <h4>Приём заявок</h4>
+        </div>
+        <div class="col-8">
+          <input id="searchInput" type="text" class="form-control" id="text-to-find" value="">
+        </div>
+        <div class="col-2">
+          <button id="doSearch" type="button" class="btn btn-warning">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+        <div id="ordersTable" class="">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ФИО</th>
+                <th>Номер заказа</th>
+                <th>Оценка</th>
+                <th style="display:none;"></th>
+              </tr>
+            </thead>
+            <tbody id="ordersDeployZone"></tbody>
+          </table>
+    </div>
+
+
+        <!-- HTML-код модального окна -->
+    <div id="myModalBox" class="fullScreen modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Заголовок модального окна -->
+          <div class="modal-header">
+            <h4 class="modal-title">Заказ № <strong id="orderNumber"></strong></h4>
+          </div>
+          <!-- Основное содержимое модального окна -->
+          <div id='orderInfo' class="modal-body">
+          </div>
+          <!-- Футер модального окна -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="searchModal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Заголовок модального окна -->
+          <!-- <div class="modal-header"> -->
+            <!-- <h4 class="modal-title">Заказ № <strong id="orderNumber"></strong></h4> -->
+          <!-- </div> -->
+          <!-- Основное содержимое модального окна -->
+          <div class="modal-body">
+            <strong>Вы ничего не ввели!</strong>
+          </div>
+          <!-- Футер модального окна -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Include jQuery -->
+    <script src="//cdn.jsdelivr.net/jquery/2.2.0/jquery.min.js"></script>
+    <!-- Include the Sidr JS -->
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src='js/ordersManager.js'></script>
+  </body>
+</html>
